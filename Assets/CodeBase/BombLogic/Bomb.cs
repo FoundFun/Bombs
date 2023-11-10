@@ -1,18 +1,30 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 namespace CodeBase.BombLogic
 {
+    [RequireComponent(typeof(AudioSource))]
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(CircleCollider2D))]
     public class Bomb : MonoBehaviour
     {
         [SerializeField] private BombAnimator _bombAnimator;
         [SerializeField] private CameraShake _cameraShake;
-        [SerializeField] private AudioSource _explosionAudio;
         [SerializeField] private LayerMask _layerToHit;
         [SerializeField] private float _fieldOfImpact;
         [SerializeField] private float _force;
 
         private readonly Collider2D[] _results = new Collider2D[10];
+
+        private CircleCollider2D _circleCollider2D;
+        private AudioSource _explosionAudio;
+
+        private void Awake()
+        {
+            _circleCollider2D = GetComponent<CircleCollider2D>();
+            _explosionAudio = GetComponent<AudioSource>();
+        }
 
         private void Update()
         {
@@ -24,13 +36,14 @@ namespace CodeBase.BombLogic
 
         private IEnumerator Explode()
         {
-            int overlapCircleNonAlloc = Physics2D.OverlapCircleNonAlloc(transform.position, _fieldOfImpact, _results, _layerToHit);
-
             _bombAnimator.Explode();
+
+            yield return new WaitForSeconds(3);
+            
+            int overlapCircleNonAlloc = Physics2D.OverlapCircleNonAlloc(_circleCollider2D.offset, _fieldOfImpact, _results, _layerToHit);
+
             _explosionAudio.Play();
             _cameraShake.Shake(10, 1);
-
-            yield return new WaitForSeconds(0.16f);
 
             for (int i = 0; i < overlapCircleNonAlloc; i++)
             {
@@ -42,7 +55,7 @@ namespace CodeBase.BombLogic
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _fieldOfImpact);
+            Gizmos.DrawWireSphere(_circleCollider2D.offset, _fieldOfImpact);
         }
     }
 }
