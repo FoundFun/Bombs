@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace CodeBase.BombLogic
 {
-    [RequireComponent(typeof(AudioSource))]
-    [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CircleCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(AudioSource))]
     public class Bomb : MonoBehaviour
     {
         [SerializeField] private BombAnimator _bombAnimator;
@@ -30,17 +30,23 @@ namespace CodeBase.BombLogic
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                StartCoroutine(Explode());
+                StartAnimationExplode();
             }
         }
 
-        private IEnumerator Explode()
+        private void OnDrawGizmosSelected()
         {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _fieldOfImpact);
+        }
+
+        private void StartAnimationExplode() =>
             _bombAnimator.Explode();
 
-            yield return new WaitForSeconds(3);
-            
-            int overlapCircleNonAlloc = Physics2D.OverlapCircleNonAlloc(_circleCollider2D.offset, _fieldOfImpact, _results, _layerToHit);
+        private void Explode()
+        {
+            int overlapCircleNonAlloc =
+                Physics2D.OverlapCircleNonAlloc(_circleCollider2D.offset, _fieldOfImpact, _results, _layerToHit);
 
             _explosionAudio.Play();
             _cameraShake.Shake(10, 1);
@@ -52,10 +58,14 @@ namespace CodeBase.BombLogic
             }
         }
 
-        private void OnDrawGizmosSelected()
+        private void Hide() =>
+            StartCoroutine(OnHide());
+
+        private IEnumerator OnHide()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_circleCollider2D.offset, _fieldOfImpact);
+            yield return new WaitUntil(() => !_explosionAudio.isPlaying);
+            
+            gameObject.SetActive(false);
         }
     }
 }

@@ -59,7 +59,7 @@ Material:
     m_Floats: []
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
-    - _ColorFire: {r: 32.823696, g: 4.1803765, b: 4.1803765, a: 0}
+    - _ColorFire: {r: 35.967285, g: 6.6166244, b: 6.6166244, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8244023206572991164
 MonoBehaviour:
