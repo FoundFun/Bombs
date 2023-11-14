@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace CodeBase.BombLogic
 {
@@ -17,6 +18,7 @@ namespace CodeBase.BombLogic
 
         private readonly Collider2D[] _results = new Collider2D[10];
 
+        private BombInput _bombInput;
         private CircleCollider2D _circleCollider2D;
         private AudioSource _explosionAudio;
 
@@ -24,23 +26,22 @@ namespace CodeBase.BombLogic
         {
             _circleCollider2D = GetComponent<CircleCollider2D>();
             _explosionAudio = GetComponent<AudioSource>();
+            _bombInput = new BombInput();
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartAnimationExplode();
-            }
+            _bombInput.Enable();
+            _bombInput.Bomb.Explode.performed += StartAnimationExplode;
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDisable()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _fieldOfImpact);
+            _bombInput.Bomb.Explode.performed -= StartAnimationExplode;
+            _bombInput.Disable();
         }
 
-        private void StartAnimationExplode() =>
+        private void StartAnimationExplode(InputAction.CallbackContext context) =>
             _bombAnimator.Explode();
 
         private void Explode()
