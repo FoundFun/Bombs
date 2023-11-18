@@ -137,7 +137,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 412
+      y: 333
       width: 26
       height: 31
     spriteID: ed6d0658484e2fd4781a1d4ec192300e
@@ -148,7 +148,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 412}
+    uvTransform: {x: 87, y: 333}
   - name: Bomb_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -157,7 +157,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 255
+      y: 214
       width: 26
       height: 33
     spriteID: efa9c4928f12b7e469285eb9aa7e2513
@@ -168,7 +168,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 255}
+    uvTransform: {x: 87, y: 214}
   - name: Bomb_Frame_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -177,7 +177,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 133
+      y: 89
       width: 26
       height: 35
     spriteID: 330e9aa6c071f00489876a93dccb82d7
@@ -188,7 +188,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 133}
+    uvTransform: {x: 87, y: 89}
   - name: Bomb_Frame_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -196,9 +196,9 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 51
-      y: 472
-      width: 27
+      x: 87
+      y: 132
+      width: 26
       height: 35
     spriteID: a5943da66b2074e4eb9c5e1669fe5cf2
     spriteBone: []
@@ -208,7 +208,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 51, y: 472}
+    uvTransform: {x: 87, y: 132}
   - name: Bomb_Frame_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -217,8 +217,8 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 334
-      width: 27
+      y: 372
+      width: 26
       height: 31
     spriteID: 5f4d7beff6216624b933a5254dfc15db
     spriteBone: []
@@ -228,7 +228,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 334}
+    uvTransform: {x: 87, y: 372}
   - name: Bomb_Frame_5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -237,8 +237,8 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 215
-      width: 27
+      y: 293
+      width: 26
       height: 32
     spriteID: 97a42f4ddc39cbb4aab078574bf1a87f
     spriteBone: []
@@ -248,7 +248,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 215}
+    uvTransform: {x: 87, y: 293}
   - name: Bomb_Frame_6
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -257,8 +257,8 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 373
-      width: 27
+      y: 411
+      width: 26
       height: 31
     spriteID: 4464bca576f451841969f924a634a79f
     spriteBone: []
@@ -268,7 +268,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 373}
+    uvTransform: {x: 87, y: 411}
   - name: Bomb_Frame_7
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -277,7 +277,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 176
+      y: 175
       width: 29
       height: 31
     spriteID: 30b4b0b45802e0b4881161d0298d49d8
@@ -288,7 +288,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 176}
+    uvTransform: {x: 87, y: 175}
   - name: Bomb_Frame_8
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -297,7 +297,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 451
+      y: 450
       width: 26
       height: 31
     spriteID: 08625dac5469ffb4ba4638222af24b6c
@@ -308,7 +308,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 451}
+    uvTransform: {x: 87, y: 450}
   - name: Bomb_Frame_9
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -356,8 +356,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
-      y: 45
+      x: 51
+      y: 472
       width: 26
       height: 36
     spriteID: 1a4bfd5873fa6bb47bf364966968c1e9
@@ -368,7 +368,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 45}
+    uvTransform: {x: 51, y: 472}
   - name: Bomb_Frame_12
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -397,7 +397,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 89
+      y: 45
       width: 26
       height: 36
     spriteID: 2d9d0eacf2ed5b4499edd7d65fe7ecda
@@ -408,7 +408,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 89}
+    uvTransform: {x: 87, y: 45}
   - name: Bomb_Frame_14
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -437,7 +437,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 296
+      y: 255
       width: 28
       height: 30
     spriteID: 45756cbf23c49f944bba11cbdf9152f2
@@ -448,7 +448,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 296}
+    uvTransform: {x: 87, y: 255}
   - name: Bomb_Frame_16
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -577,7 +577,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 87
-      y: 490
+      y: 489
       width: 16
       height: 16
     spriteID: afce1fddf524f7146b6ff97fcdb0d669
@@ -588,7 +588,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 490}
+    uvTransform: {x: 87, y: 489}
   - name: Bomb_Frame_23
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1307,7 +1307,7 @@ ScriptedImporter:
       cellRect:
         x: 21
         y: 24
-        width: 27
+        width: 26
         height: 35
       spriteId: a5943da66b2074e4eb9c5e1669fe5cf2
     - name: Bomb_Frame_4
@@ -1315,7 +1315,7 @@ ScriptedImporter:
       cellRect:
         x: 21
         y: 24
-        width: 27
+        width: 26
         height: 31
       spriteId: 5f4d7beff6216624b933a5254dfc15db
     - name: Bomb_Frame_5
@@ -1323,7 +1323,7 @@ ScriptedImporter:
       cellRect:
         x: 21
         y: 24
-        width: 27
+        width: 26
         height: 32
       spriteId: 97a42f4ddc39cbb4aab078574bf1a87f
     - name: Bomb_Frame_6
@@ -1331,7 +1331,7 @@ ScriptedImporter:
       cellRect:
         x: 21
         y: 24
-        width: 27
+        width: 26
         height: 31
       spriteId: 4464bca576f451841969f924a634a79f
     - name: Bomb_Frame_7
