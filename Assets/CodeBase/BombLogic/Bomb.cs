@@ -56,6 +56,7 @@ namespace CodeBase.BombLogic
             {
                 Vector2 direction = _results[i].transform.position - transform.position;
                 _results[i].GetComponent<Rigidbody2D>().AddForce(direction * _force, ForceMode2D.Impulse);
+                _results[i].GetComponent<Rigidbody2D>().AddTorque(direction.x * _force, ForceMode2D.Impulse);
             }
         }
 
