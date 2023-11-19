@@ -35,6 +35,15 @@ public partial class @BombInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Recharge"",
+                    ""type"": ""Button"",
+                    ""id"": ""03c00671-1728-4ac6-9da2-2ca43d735462"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @BombInput: IInputActionCollection2, IDisposable
                     ""action"": ""Explode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37ab4f31-b6cf-45de-ac9b-0963b9c7ce5a"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @BombInput: IInputActionCollection2, IDisposable
         // Bomb
         m_Bomb = asset.FindActionMap("Bomb", throwIfNotFound: true);
         m_Bomb_Explode = m_Bomb.FindAction("Explode", throwIfNotFound: true);
+        m_Bomb_Recharge = m_Bomb.FindAction("Recharge", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +140,13 @@ public partial class @BombInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Bomb;
     private List<IBombActions> m_BombActionsCallbackInterfaces = new List<IBombActions>();
     private readonly InputAction m_Bomb_Explode;
+    private readonly InputAction m_Bomb_Recharge;
     public struct BombActions
     {
         private @BombInput m_Wrapper;
         public BombActions(@BombInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Explode => m_Wrapper.m_Bomb_Explode;
+        public InputAction @Recharge => m_Wrapper.m_Bomb_Recharge;
         public InputActionMap Get() { return m_Wrapper.m_Bomb; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +159,9 @@ public partial class @BombInput: IInputActionCollection2, IDisposable
             @Explode.started += instance.OnExplode;
             @Explode.performed += instance.OnExplode;
             @Explode.canceled += instance.OnExplode;
+            @Recharge.started += instance.OnRecharge;
+            @Recharge.performed += instance.OnRecharge;
+            @Recharge.canceled += instance.OnRecharge;
         }
 
         private void UnregisterCallbacks(IBombActions instance)
@@ -143,6 +169,9 @@ public partial class @BombInput: IInputActionCollection2, IDisposable
             @Explode.started -= instance.OnExplode;
             @Explode.performed -= instance.OnExplode;
             @Explode.canceled -= instance.OnExplode;
+            @Recharge.started -= instance.OnRecharge;
+            @Recharge.performed -= instance.OnRecharge;
+            @Recharge.canceled -= instance.OnRecharge;
         }
 
         public void RemoveCallbacks(IBombActions instance)
@@ -163,5 +192,6 @@ public partial class @BombInput: IInputActionCollection2, IDisposable
     public interface IBombActions
     {
         void OnExplode(InputAction.CallbackContext context);
+        void OnRecharge(InputAction.CallbackContext context);
     }
 }
