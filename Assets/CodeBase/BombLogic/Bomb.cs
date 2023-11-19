@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,21 +10,24 @@ namespace CodeBase.BombLogic
     public class Bomb : MonoBehaviour
     {
         [SerializeField] private BombAnimator _bombAnimator;
-        [SerializeField] private CameraShake _cameraShake;
         [SerializeField] private LayerMask _layerToHit;
         [SerializeField] private float _fieldOfImpact;
-        [SerializeField] private float _force;
+        [SerializeField] private float _impulse;
 
         private readonly Collider2D[] _results = new Collider2D[10];
 
         private BombInput _bombInput;
         private CircleCollider2D _circleCollider2D;
         private AudioSource _explosionAudio;
+        private CameraShake _cameraShake;
+
+        public bool IsExplode { get; set; }
 
         private void Awake()
         {
             _circleCollider2D = GetComponent<CircleCollider2D>();
             _explosionAudio = GetComponent<AudioSource>();
+            _cameraShake = FindObjectOfType<CameraShake>();
             _bombInput = new BombInput();
         }
 
@@ -50,14 +52,16 @@ namespace CodeBase.BombLogic
                 Physics2D.OverlapCircleNonAlloc(_circleCollider2D.offset, _fieldOfImpact, _results, _layerToHit);
 
             _explosionAudio.Play();
-            _cameraShake.Shake(10, 1);
+            _cameraShake.Shake(20, 1);
 
             for (int i = 0; i < overlapCircleNonAlloc; i++)
             {
                 Vector2 direction = _results[i].transform.position - transform.position;
-                _results[i].GetComponent<Rigidbody2D>().AddForce(direction * _force, ForceMode2D.Impulse);
-                _results[i].GetComponent<Rigidbody2D>().AddTorque(direction.x * _force, ForceMode2D.Impulse);
+                _results[i].GetComponent<Rigidbody2D>().AddForce(direction * _impulse, ForceMode2D.Impulse);
+                _results[i].GetComponent<Rigidbody2D>().AddTorque(direction.x * _impulse, ForceMode2D.Impulse);
             }
+
+            IsExplode = true;
         }
 
         private void Hide() =>
@@ -68,6 +72,12 @@ namespace CodeBase.BombLogic
             yield return new WaitUntil(() => !_explosionAudio.isPlaying);
             
             gameObject.SetActive(false);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _fieldOfImpact);
         }
     }
 }
