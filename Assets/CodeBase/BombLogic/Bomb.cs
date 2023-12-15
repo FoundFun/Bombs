@@ -20,6 +20,7 @@ namespace CodeBase.BombLogic
         private CircleCollider2D _circleCollider2D;
         private AudioSource _explosionAudio;
         private CameraShake _cameraShake;
+        private Rigidbody2D _rigidbody2D;
 
         public bool IsExplode { get; set; }
 
@@ -28,6 +29,7 @@ namespace CodeBase.BombLogic
             _circleCollider2D = GetComponent<CircleCollider2D>();
             _explosionAudio = GetComponent<AudioSource>();
             _cameraShake = FindObjectOfType<CameraShake>();
+            _rigidbody2D = GetComponent<Rigidbody2D>();
             _bombInput = new BombInput();
         }
 
@@ -51,6 +53,7 @@ namespace CodeBase.BombLogic
             int overlapCircleNonAlloc =
                 Physics2D.OverlapCircleNonAlloc(_circleCollider2D.offset, _fieldOfImpact, _results, _layerToHit);
 
+            _rigidbody2D.bodyType = RigidbodyType2D.Static;
             _explosionAudio.Play();
             _cameraShake.Shake(20, 1);
 
@@ -72,6 +75,7 @@ namespace CodeBase.BombLogic
             yield return new WaitUntil(() => !_explosionAudio.isPlaying);
             
             gameObject.SetActive(false);
+            _rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         }
 
         private void OnDrawGizmosSelected()
